@@ -9,6 +9,11 @@ const NAV_LINKS = [
   { id: "contact", label: "Contact" },
 ];
 
+const SOCIAL_LINKS = [
+  { label: "GitHub", href: "https://github.com/Ruoxi-nanaman" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/JeruPabutoy" },
+];
+
 export default function Navbar({ activeId }) {
   const [open, setOpen] = useState(false);
 
@@ -52,12 +57,20 @@ export default function Navbar({ activeId }) {
           </ul>
         </nav>
 
-        <a
-          href="#contact"
-          className="hidden items-center gap-1.5 text-sm text-aether-100 hover:text-aether-50 transition-colors sm:inline-flex md:inline-flex"
-        >
-          Get in touch <ArrowUpRight className="h-3.5 w-3.5" />
-        </a>
+        {/* Desktop social links */}
+        <div className="hidden items-center gap-6 sm:flex">
+          {SOCIAL_LINKS.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-sm text-aether-100 hover:text-aether-50 transition-colors"
+            >
+              {link.label} <ArrowUpRight className="h-3.5 w-3.5" />
+            </a>
+          ))}
+        </div>
 
         {/* Mobile menu toggle */}
         <button
@@ -94,14 +107,18 @@ export default function Navbar({ activeId }) {
                 </a>
               </li>
             ))}
-            <li className="mt-2 border-t border-ink-700/40 pt-3">
-              <a
-                href="#contact"
-                onClick={handleNavClick}
-                className="inline-flex items-center gap-1.5 text-sm text-aether-100 hover:text-aether-50 transition-colors"
-              >
-                Get in touch <ArrowUpRight className="h-3.5 w-3.5" />
-              </a>
+            <li className="mt-2 flex gap-6 border-t border-ink-700/40 pt-3">
+              {SOCIAL_LINKS.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm text-aether-100 hover:text-aether-50 transition-colors"
+                >
+                  {link.label} <ArrowUpRight className="h-3.5 w-3.5" />
+                </a>
+              ))}
             </li>
           </ul>
         </nav>

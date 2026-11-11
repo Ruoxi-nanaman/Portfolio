@@ -131,37 +131,6 @@ export default function Contact() {
                 Have an idea, a question, or just a hello? I&apos;d love to hear
                 what you&apos;re thinking.
               </p>
-
-              <div className="mt-12">
-                <p className="text-[0.65rem] uppercase tracking-[0.22em] text-aether-300/80">
-                  Say Hello
-                </p>
-                <a
-                  href="mailto:hello@example.com"
-                  className="mt-4 inline-flex items-center gap-2 font-serif text-2xl font-light text-text-base hover:text-aether-100 transition-colors sm:text-3xl"
-                >
-                  hello@example.com <ArrowUpRight className="h-5 w-5" />
-                </a>
-
-                <div className="mt-6 flex gap-6">
-                  <a
-                    href="#"
-                    className="inline-flex items-center gap-1.5 text-sm text-text-muted hover:text-aether-100 transition-colors"
-                  >
-                    GitHub <ArrowUpRight className="h-3.5 w-3.5" />
-                  </a>
-                  <a
-                    href="#"
-                    className="inline-flex items-center gap-1.5 text-sm text-text-muted hover:text-aether-100 transition-colors"
-                  >
-                    LinkedIn <ArrowUpRight className="h-3.5 w-3.5" />
-                  </a>
-                </div>
-
-                <p className="mt-8 text-xs text-text-dim">
-                  Contact details and profiles are placeholders.
-                </p>
-              </div>
             </div>
 
             {/* Right: form */}
