@@ -1,0 +1,230 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Ruo Xi — Design System
+   Dark celestial palette with soft blue ambient lighting.
+   ============================================================ */
+
+@theme {
+  /* Palette — charcoal + blue-black base */
+  --color-void-950: #05070b;
+  --color-void-900: #080b11;
+  --color-ink-900: #0a0e14;
+  --color-ink-850: #0c1118;
+  --color-ink-800: #0f141c;
+  --color-ink-750: #121822;
+  --color-ink-700: #161d29;
+  --color-ink-650: #1b2330;
+  --color-ink-600: #212b3a;
+  --color-ink-500: #2c384a;
+  --color-ink-400: #3d4b60;
+  --color-ink-300: #5b6a82;
+  --color-ink-200: #8b98ad;
+  --color-ink-100: #b8c2d1;
+
+  /* Blue ambient accents */
+  --color-aether-50: #eef4fb;
+  --color-aether-100: #d4e2f2;
+  --color-aether-200: #a9c2e0;
+  --color-aether-300: #7da3cc;
+  --color-aether-400: #5a86b8;
+  --color-aether-500: #3f6a9c;
+  --color-aether-600: #2e5280;
+  --color-aether-700: #223e61;
+  --color-aether-800: #182c47;
+  --color-aether-900: #101d31;
+  --color-aether-glow: #6ea8d8;
+
+  /* Text */
+  --color-text-base: #e8ecf2;
+  --color-text-muted: #9aa7b8;
+  --color-text-dim: #6b7789;
+
+  /* Typography */
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* Shadows — subtle, cool-toned */
+  --shadow-lift: 0 1px 0 rgba(255, 255, 255, 0.03), 0 8px 24px -12px rgba(0, 0, 0, 0.6);
+  --shadow-panel: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 12px 40px -20px rgba(0, 0, 0, 0.8);
+  --shadow-elevated: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 24px 60px -30px rgba(0, 0, 0, 0.9),
+    0 0 0 1px rgba(110, 168, 216, 0.06);
+
+  /* Easing */
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Base */
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  /* Continuous charcoal / blue-black foundation across the whole page. */
+  background-color: #070a0f;
+  color: var(--color-text-base);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/*
+ * Continuous background environment.
+ * The animated/parallax layers are rendered by the <BackgroundLayer />
+ * component so they can react to scroll. These pseudo-elements provide a
+ * stable base so there is never a visible seam between sections.
+ */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  background:
+    radial-gradient(1100px circle at 50% -10%, rgba(34, 62, 97, 0.18), transparent 55%),
+    linear-gradient(180deg, #080b11 0%, #0a0e14 45%, #06080c 100%);
+  pointer-events: none;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-image:
+    radial-gradient(rgba(184, 194, 209, 0.5) 0.6px, transparent 0.6px);
+  background-size: 160px 160px;
+  background-position: 0 0;
+  opacity: 0.28;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  will-change: background-position;
+}
+
+/* Selection */
+::selection {
+  background: rgba(110, 168, 216, 0.28);
+  color: var(--color-text-base);
+}
+
+/* Focus */
+:focus-visible {
+  outline: 1px solid var(--color-aether-400);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-void-900);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-ink-600);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ink-500);
+}
+
+/* Reusable ambient gradient surface.
+   Kept semi-transparent so the continuous background environment shows through. */
+.surface-panel {
+  background:
+    linear-gradient(160deg, rgba(22, 29, 41, 0.55) 0%, rgba(12, 17, 24, 0.6) 100%);
+  border: 1px solid rgba(110, 168, 216, 0.08);
+  box-shadow: var(--shadow-panel);
+  backdrop-filter: blur(2px);
+}
+
+.surface-elevated {
+  background:
+    linear-gradient(160deg, rgba(27, 35, 48, 0.6) 0%, rgba(15, 20, 28, 0.65) 100%);
+  border: 1px solid rgba(110, 168, 216, 0.12);
+  box-shadow: var(--shadow-elevated);
+}
+
+/* Subtle hairline divider */
+.hairline {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(139, 152, 173, 0.18), transparent);
+}
+
+/* Eyebrow label */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--color-aether-200);
+}
+
+/* Loading screen — uses the same Moon visual as the Home hero.
+   Fades out as soon as the page finishes loading (no artificial delay). */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  background:
+    radial-gradient(1000px circle at 50% 35%, rgba(34, 62, 97, 0.28), transparent 60%),
+    linear-gradient(180deg, #06080c 0%, #080b11 50%, #06080c 100%);
+  opacity: 1;
+  transition: opacity 600ms ease;
+  pointer-events: auto;
+}
+.loading-screen--hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.loading-screen__moon {
+  width: min(60vw, 360px);
+  height: min(60vw, 360px);
+}
+.loading-screen__indicator {
+  display: flex;
+  gap: 0.5rem;
+}
+.loading-screen__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: rgba(205, 224, 248, 0.85);
+  opacity: 0.3;
+  animation: loading-dot 1s ease-in-out infinite;
+}
+@keyframes loading-dot {
+  0%, 80%, 100% { opacity: 0.25; transform: scale(0.85); }
+  40% { opacity: 1; transform: scale(1); }
+}
+
+/* Reduce motion — freeze transitions.
+   The canvas starfield/cursor-light is not rendered at all for reduced motion
+   (handled in BackgroundLayer.jsx), and the ambient glow JS loop is skipped,
+   so only CSS transitions/animations need to be neutralised here. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
