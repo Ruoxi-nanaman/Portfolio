@@ -21,14 +21,14 @@ export const projects = [
     },
     links: {
       view: "#",
-      github: "#",
+      github: "https://github.com/Ruoxi-nanaman/GameVault",
     },
     featured: true,
   },
   {
     id: "eduquest",
     number: "02",
-    tag: "Assessment System",
+    tag: "Capstone Project",
     title: "Eduquest",
     description:
       "A CTT-based assessment system that helps instructors analyze multiple-choice questions, evaluate item performance, and manage a centralized question bank through automated item analysis and reporting.",
@@ -40,7 +40,7 @@ export const projects = [
     },
     links: {
       view: "#",
-      github: "#",
+      github: "https://github.com/GemsLister/eduquest",
     },
     featured: true,
   },

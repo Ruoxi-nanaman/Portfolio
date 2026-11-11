@@ -87,6 +87,8 @@ export default function ProjectCard({ project }) {
             </a>
             <a
               href={project.links.github}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-sm text-text-muted transition-colors hover:text-aether-100"
             >
               GitHub <ArrowUpRight className="h-3.5 w-3.5" />
