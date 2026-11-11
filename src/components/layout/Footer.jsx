@@ -1,3 +1,4 @@
+
 import { ArrowUp } from "lucide-react";
 
 export default function Footer() {
@@ -24,17 +25,23 @@ export default function Footer() {
 
           <div className="flex items-center gap-6">
             <a
-              href="#"
+              href="https://github.com/Ruoxi-nanaman"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-sm text-text-muted hover:text-aether-100 transition-colors"
             >
               GitHub
             </a>
+
             <a
-              href="#"
+              href="https://www.linkedin.com/in/JeruPabutoy"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-sm text-text-muted hover:text-aether-100 transition-colors"
             >
               LinkedIn
             </a>
+
             <a
               href="#home"
               className="inline-flex items-center gap-1.5 text-sm text-text-muted hover:text-aether-100 transition-colors"
